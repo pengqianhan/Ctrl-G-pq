@@ -99,6 +99,11 @@ class ConstraintLogitsProcessor(LogitsProcessor):
     def __init__(self, hmm_model, dfa_model,
         min_new_tokens, max_new_tokens, prompt_ids, prefix_ids=[], suffix_ids=[],
         temperature=1.0, token_ranges=None, hmm_batch_size=None):
+        ##min_new_tokens = 5  
+        ##max_new_tokens = 32
+        ##prompt_ids = [50256]
+        ##prefix_ids = []
+        ##suffix_ids = [50256]
 
         device = hmm_model.alpha_exp.device
         hidden_states, vocab_size = hmm_model.hidden_states, hmm_model.vocab_size
@@ -183,9 +188,9 @@ class ConstraintLogitsProcessor(LogitsProcessor):
         self.C_cache = C_cache
         self.D_cache = D_cache
 
-        self.prompt_ids = prompt_ids
-        self.prefix_ids = prefix_ids
-        self.suffix_ids = suffix_ids
+        self.prompt_ids = prompt_ids##[50256]
+        self.prefix_ids = prefix_ids##[]
+        self.suffix_ids = suffix_ids##[50256]
 
         self.temperature = temperature
         self.token_ranges = token_ranges
